@@ -5,8 +5,8 @@ form.addEventListener("submit", handleSubmit);
 function handleSubmit(e) {
   e.preventDefault();
   clearErrors();
-  const height = document.getElementById("height").value;
-  const weight = document.getElementById("weight").value;
+  const height = document.getElementById("height").value.trim();
+  const weight = document.getElementById("weight").value.trim();
   if (validateForm(height, weight)) {
     const bmi = (weight / (height / 100) ** 2).toFixed(2);
     results.innerHTML = `<span>${bmi}</span>`;
@@ -32,7 +32,7 @@ function validateForm(height, weight) {
     if (!weight) weightError("Please enter your weight");
     return false;
   }
-  if (Number.isNaN(Number(height)) || Number.isNaN(Number(weight))) {
+  else if (Number.isNaN(Number(height)) || Number.isNaN(Number(weight))) {
     if (Number.isNaN(Number(height))) {
       heightError("Invalid height");
     }
@@ -41,6 +41,18 @@ function validateForm(height, weight) {
     }
     return false;
   }
+   else if(Number(height) <=0 || Number(weight) <= 0){
+        if(Number(height) <= 0){
+            heightError("Invalid height");
+        }
+        if(Number(weight) <= 0){
+            weightError("Invalid weight");
+        }
+
+        return false;
+    }
+
+  
 
   return true;
 }
