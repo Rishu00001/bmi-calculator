@@ -24,8 +24,8 @@ body {
     align-items: center;
     flex-direction: column;
     margin-top: 50px;
-    max-width: 90vw;
-    min-width: 60vw;
+    max-width: 70vw;
+    min-width: 80vw;
     border-radius: 8px;
     box-shadow: -2px 2px 3px rgb(57, 57, 57);
     padding: 20px;
@@ -62,4 +62,9 @@ button{
     color:rgb(139, 0, 0);
     font-size: smaller;
     font-weight: 700;
+}
+@media (max-width:400px){
+      .container{
+        max-width: 60vw;
+      }
 }
